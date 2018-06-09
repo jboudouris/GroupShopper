@@ -17,13 +17,13 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Add Items"
+        title = "Totals Page"
         
-        itemList = ["A", "B", "C"]
+        totals = ["A", "B", "C"]
         
         button.setTitle("Press this", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
-        button.addTarget(self, action: #selector(AddItemsPage.showNextScreen), for: .touchUpInside)
+        button.addTarget(self, action: #selector(TotalsPage.toHome), for: .touchUpInside)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -46,28 +46,20 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    @objc func showNextScreen() {
-        // TODO: Need to use story board?
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! AddItemsPage
-        navigationController?.pushViewController(vc, animated: true)
+    @objc func toHome() {
+        navigationController?.pushViewController(HomeController(), animated: true)
+        // reset all variables??
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+        return totals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = itemList[indexPath.row]
+        cell.textLabel?.text = totals[indexPath.row]
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            itemList.remove(at: indexPath.row)
-            tableView.reloadData()
-        }
     }
 }

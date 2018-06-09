@@ -10,6 +10,7 @@ import Foundation
 
 var personList = [String]()
 var itemList = [String]()
+var totals = [String]()
 
 func savePeople(personList:[String]) {
     UserDefaults.standard.set(personList, forKey: "personList")
