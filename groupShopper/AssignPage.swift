@@ -49,7 +49,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         button.reloadInputViews()
         
         // Next person button frame to be right justafied on bottom of screen
-        switchPersonButton.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
+        switchPersonButton.frame = CGRect(x: view.frame.width - 180, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
         switchPersonButton.reloadInputViews()
         
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)

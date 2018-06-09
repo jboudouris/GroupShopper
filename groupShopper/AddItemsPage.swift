@@ -27,6 +27,9 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         button.setTitleColor(UIColor.blue, for: .normal)
         button.addTarget(self, action: #selector(AddItemsPage.showNextScreen), for: .touchUpInside)
         
+        // Creates the plus button in the navigation bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddItemsPage.showNextScreen))
+
         // Show added items
         tableView.dataSource = self
         tableView.delegate = self

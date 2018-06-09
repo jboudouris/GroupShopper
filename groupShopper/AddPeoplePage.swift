@@ -12,7 +12,8 @@ class AddPeople: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableView = UITableView(frame: CGRect(), style: .plain)
     var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-    
+   // var addPersonButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: YOUR_SELECTOR)
+    //var addPersonButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(AddPeople.showNextScreen))
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +30,9 @@ class AddPeople: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         view.addSubview(button)
         
+        // Creates the plus button in the navigation bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddPeople.showNextScreen))
+
         // Displays people in a list on page
         tableView.dataSource = self
         tableView.delegate = self
