@@ -13,6 +13,8 @@
 		8501CBC620CC402600E692E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8501CBC520CC402600E692E9 /* Assets.xcassets */; };
 		8501CBC920CC402600E692E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8501CBC720CC402600E692E9 /* LaunchScreen.storyboard */; };
 		8501CBD420CC402600E692E9 /* groupShopperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBD320CC402600E692E9 /* groupShopperTests.swift */; };
+		8501CBDF20CC415900E692E9 /* addController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBDE20CC415900E692E9 /* addController.swift */; };
+		8501CBE120CC420000E692E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBE020CC420000E692E9 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		8501CBCF20CC402600E692E9 /* groupShopperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = groupShopperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8501CBD320CC402600E692E9 /* groupShopperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupShopperTests.swift; sourceTree = "<group>"; };
 		8501CBD520CC402600E692E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8501CBDE20CC415900E692E9 /* addController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addController.swift; sourceTree = "<group>"; };
+		8501CBE020CC420000E692E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +83,12 @@
 			children = (
 				8501CBBE20CC402500E692E9 /* AppDelegate.swift */,
 				8501CBC020CC402500E692E9 /* ViewController.swift */,
+				8501CBDE20CC415900E692E9 /* addController.swift */,
 				8501CBC220CC402500E692E9 /* Main.storyboard */,
 				8501CBC520CC402600E692E9 /* Assets.xcassets */,
 				8501CBC720CC402600E692E9 /* LaunchScreen.storyboard */,
 				8501CBCA20CC402600E692E9 /* Info.plist */,
+				8501CBE020CC420000E692E9 /* Constants.swift */,
 			);
 			path = groupShopper;
 			sourceTree = "<group>";
@@ -198,7 +204,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8501CBC120CC402500E692E9 /* ViewController.swift in Sources */,
+				8501CBDF20CC415900E692E9 /* addController.swift in Sources */,
 				8501CBBF20CC402500E692E9 /* AppDelegate.swift in Sources */,
+				8501CBE120CC420000E692E9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
