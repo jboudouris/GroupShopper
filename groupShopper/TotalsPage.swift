@@ -1,14 +1,14 @@
 //
-//  AddItemsPage.swift
+//  TotalsPage.swift
 //  groupShopper
 //
-//  Created by Ethan Young on 6/9/18.
+//  Created by James Boudouris on 6/9/18.
 //  Copyright © 2018 discountShoppers. All rights reserved.
 //
 
 import UIKit
 
-class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     var tableView = UITableView(frame: CGRect(), style: .plain)
@@ -47,7 +47,9 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     @objc func showNextScreen() {
-        navigationController?.pushViewController(AssignPage(), animated: true)
+        // TODO: Need to use story board?
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! AddItemsPage
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

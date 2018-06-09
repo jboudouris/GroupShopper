@@ -17,6 +17,8 @@
 		8501CBD420CC402600E692E9 /* groupShopperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBD320CC402600E692E9 /* groupShopperTests.swift */; };
 		8501CBDF20CC415900E692E9 /* addController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBDE20CC415900E692E9 /* addController.swift */; };
 		8501CBE120CC420000E692E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBE020CC420000E692E9 /* Constants.swift */; };
+		8501CBE320CC672000E692E9 /* TotalsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBE220CC672000E692E9 /* TotalsPage.swift */; };
+		8501CBE520CC676300E692E9 /* AssignPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBE420CC676300E692E9 /* AssignPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		8501CBD520CC402600E692E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8501CBDE20CC415900E692E9 /* addController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addController.swift; sourceTree = "<group>"; };
 		8501CBE020CC420000E692E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8501CBE220CC672000E692E9 /* TotalsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalsPage.swift; sourceTree = "<group>"; };
+		8501CBE420CC676300E692E9 /* AssignPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				8501CBDE20CC415900E692E9 /* addController.swift */,
 				74384E3420CC570300B232D3 /* HomeController.swift */,
 				74384E3620CC629500B232D3 /* AddItemsPage.swift */,
+				8501CBE420CC676300E692E9 /* AssignPage.swift */,
+				8501CBE220CC672000E692E9 /* TotalsPage.swift */,
 				8501CBC220CC402500E692E9 /* Main.storyboard */,
 				8501CBC520CC402600E692E9 /* Assets.xcassets */,
 				8501CBC720CC402600E692E9 /* LaunchScreen.storyboard */,
@@ -209,10 +215,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8501CBE320CC672000E692E9 /* TotalsPage.swift in Sources */,
 				8501CBC120CC402500E692E9 /* ViewController.swift in Sources */,
 				8501CBDF20CC415900E692E9 /* addController.swift in Sources */,
 				8501CBBF20CC402500E692E9 /* AppDelegate.swift in Sources */,
 				8501CBE120CC420000E692E9 /* Constants.swift in Sources */,
+				8501CBE520CC676300E692E9 /* AssignPage.swift in Sources */,
 				74384E3520CC570300B232D3 /* HomeController.swift in Sources */,
 				74384E3720CC629500B232D3 /* AddItemsPage.swift in Sources */,
 			);
