@@ -11,46 +11,50 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-    @IBOutlet weak var tableView: UITableView!
+    var tableView = UITableView(frame: CGRect(), style: .plain)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Add People"
+        
+        todoList = ["Apple", "Banana", "Carrot"]
+        
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        view.addSubview(tableView)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.frame = view.frame
         tableView.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    func showNextScreen() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let todo = todoList {
-            return todo.count
-        } else {
-            return 0
-        }
+        return todoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        if let todo = todoList {
-            cell.textLabel?.text = todo[indexPath.row]
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = todoList[indexPath.row]
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            todoList?.remove(at: indexPath.row)
+            todoList.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
