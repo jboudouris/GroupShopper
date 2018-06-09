@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
+//  AddItemsPage.swift
 //  groupShopper
 //
-//  Created by James Boudouris on 6/9/18.
+//  Created by Ethan Young on 6/9/18.
 //  Copyright © 2018 discountShoppers. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     
     var tableView = UITableView(frame: CGRect(), style: .plain)
     var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
@@ -17,13 +17,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Add People"
+        title = "Add Items"
         
-        personList = ["Apple", "Banana", "Carrot"]
+        itemList = ["A", "B", "C"]
         
         button.setTitle("Press this", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
-        button.addTarget(self, action: #selector(ViewController.showNextScreen), for: .touchUpInside)
+        button.addTarget(self, action: #selector(AddItemsPage.showNextScreen), for: .touchUpInside)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -47,28 +47,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     @objc func showNextScreen() {
-        //let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddItemsPage") as! AddItemsPage
-        //navigationController?.pushViewController(vc, animated: true)
-        navigationController?.pushViewController(AddItemsPage(), animated: true)
+        // TODO: Need to use story board?
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! AddItemsPage
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personList.count
+        return itemList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = personList[indexPath.row]
+        cell.textLabel?.text = itemList[indexPath.row]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            personList.remove(at: indexPath.row)
+            itemList.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
 }
-

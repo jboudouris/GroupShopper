@@ -8,9 +8,14 @@
 
 import Foundation
 
-var todoList = [String]()
+var personList = [String]()
+var itemList = [String]()
 
-func saveData(todoList:[String]) {
-    UserDefaults.standard.set(todoList, forKey: "todoList")
+func savePeople(personList:[String]) {
+    UserDefaults.standard.set(personList, forKey: "personList")
+}
+
+func saveItems(itemList:[String]) {
+    UserDefaults.standard.set(itemList, forKey: "itemList")
 }
 

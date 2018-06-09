@@ -20,7 +20,7 @@ class addController: UIViewController {
     
     @IBAction func addPressed(_ sender: UIButton) {
         if textField.hasText {
-            todoList.append(textField.text!)
+            personList.append(textField.text!)
             textField.text = ""
             textField.placeholder = "add another?"
         }
