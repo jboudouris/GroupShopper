@@ -20,19 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window!.makeKeyAndVisible()
         
-        //let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        window!.rootViewController = UINavigationController(rootViewController: HomeController())
+        // Sets homage to open on app launch
+        window!.rootViewController = UINavigationController(rootViewController: HomePage())
         
-        //Storyboard
-        
+        // Load saved data into variables
         if let people = UserDefaults.standard.array(forKey: "personList") as? [String] {
             personList = people
         }
         if let items = UserDefaults.standard.array(forKey: "itemList") as? [String] {
             itemList = items
         }
-        
-
         
         return true
     }
@@ -46,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
+        
+        // Save working data
         savePeople(personList: personList)
         saveItems(itemList: itemList)
     }
@@ -60,6 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        // Save working data
         savePeople(personList: personList)
         saveItems(itemList: itemList)
     }

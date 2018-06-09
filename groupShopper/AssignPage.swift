@@ -10,22 +10,22 @@ import UIKit
 
 class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     var tableView = UITableView(frame: CGRect(), style: .plain)
-    var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-    var switchPersonButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+    var button = UIButton(frame: CGRect())
+    var switchPersonButton = UIButton(frame: CGRect())
     
-    var remainingPersonCount = personList.count
+    var remainingPersonCount = personList.count // tracks which person items are being checked off for
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Assign Items"
+        view.backgroundColor = UIColor.white
         
-        itemList = ["A", "B", "C"]
+        itemList = ["A", "B", "C"] // temp, will be pulled from stored data
         
-        button.setTitle("Press this", for: .normal)
+        button.setTitle("Done", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         button.addTarget(self, action: #selector(AssignPage.showNextScreen), for: .touchUpInside)
         
@@ -38,17 +38,18 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         view.addSubview(switchPersonButton)
-        
-        view.backgroundColor = UIColor.white
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        button.frame = CGRect(x: 0, y: view.frame.height - 50, width: view.frame.width/2, height: 50)
+        // Set advance button frame to be placed right justafied on the bottom of the screen // COULD USE CLEANUP ON PLACEMENT
+        button.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
         button.reloadInputViews()
         
-        switchPersonButton.frame = CGRect(x: 0, y: view.frame.height - 50, width: view.frame.width/2, height: 50)
+        // Next person button frame to be right justafied on bottom of screen
+        switchPersonButton.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
         switchPersonButton.reloadInputViews()
         
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
@@ -56,12 +57,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         view.addSubview(tableView)
         
-        
-        
-        
-        
     }
-    
     
     @objc func showNextScreen() {
         // update to only show on last person
@@ -69,11 +65,11 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func nextPerson() {
-        // save checked item data from prev person
+        // TODO: save checked item data from prev person
         
-        // reset all checkmarks
+        // TODO: reset all checkmarks
         
-        // update name at top to next person
+        // TODO: update name at top to next person
         
         remainingPersonCount = remainingPersonCount - 1
         
@@ -95,13 +91,6 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.accessoryType = .none
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            itemList.remove(at: indexPath.row)
-            tableView.reloadData()
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

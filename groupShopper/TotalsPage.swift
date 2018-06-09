@@ -18,10 +18,11 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         
         title = "Totals Page"
+        view.backgroundColor = UIColor.white
         
-        totals = ["A", "B", "C"]
+        totals = ["A", "B", "C"] // temp, will be calculated based on checked data
         
-        button.setTitle("Press this", for: .normal)
+        button.setTitle("Done", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         button.addTarget(self, action: #selector(TotalsPage.toHome), for: .touchUpInside)
         
@@ -31,24 +32,25 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         view.addSubview(tableView)
         view.addSubview(button)
-        
-        view.backgroundColor = UIColor.white
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        button.frame = CGRect(x: 0, y: view.frame.height - 50, width: view.frame.width/2, height: 50)
+        // Set advance button frame to be placed right justafied on the bottom of the screen // COULD USE CLEANUP ON PLACEMENT
+        button.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
         button.reloadInputViews()
         
+        // List frame takes up all but bottom of screen to allow room for "done" button
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
         tableView.reloadData()
     }
     
     
     @objc func toHome() {
-        navigationController?.pushViewController(HomeController(), animated: true)
-        // reset all variables??
+        navigationController?.pushViewController(HomePage(), animated: true)
+        // TODO: reset all variables?? / option to save data
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -12,19 +12,22 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     var tableView = UITableView(frame: CGRect(), style: .plain)
-    var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+    var button = UIButton(frame: CGRect())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Add Items"
+        view.backgroundColor = UIColor.white
         
-        itemList = ["A", "B", "C"]
+        itemList = ["A", "B", "C"] // temp
         
-        button.setTitle("Press this", for: .normal)
+        // Button to advance page
+        button.setTitle("Done", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         button.addTarget(self, action: #selector(AddItemsPage.showNextScreen), for: .touchUpInside)
         
+        // Show added items
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -32,13 +35,13 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         view.addSubview(tableView)
         view.addSubview(button)
         
-        view.backgroundColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        button.frame = CGRect(x: 0, y: view.frame.height - 50, width: view.frame.width/2, height: 50)
+        // Set advance button frame to be placed right justafied on the bottom of the screen // COULD USE CLEANUP ON PLACEMENT
+        button.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
         button.reloadInputViews()
         
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
