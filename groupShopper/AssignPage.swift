@@ -100,6 +100,9 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let  cell = tableView.cellForRow(at: indexPath)
         if (cell!.accessoryType == .none) {
             cell!.accessoryType = .checkmark
+            let item = itemList.filter() { $0.name == cell!.textLabel?.text! }
+            currentPerson.addItem(item: item[0])
+            
         } else {
             cell!.accessoryType = .none
         }
