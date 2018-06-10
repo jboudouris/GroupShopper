@@ -28,7 +28,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         button.addTarget(self, action: #selector(AddItemsPage.showNextScreen), for: .touchUpInside)
         
         // Creates the plus button in the navigation bar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddItemsPage.showNextScreen))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddItemsPage.addItem))
 
         // Show added items
         tableView.dataSource = self
@@ -54,6 +54,32 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @objc func showNextScreen() {
         navigationController?.pushViewController(AssignPage(), animated: true)
+    }
+    
+    @objc func addItem() {
+        
+        // Creates a pop up prompting for item name and price
+        let alert = UIAlertController(title: "Add an item", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input item name here..."
+        })
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input price here..."
+        })
+        
+        // Add the price of the item
+        
+        alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
+            
+            // Add updating of item list here
+            if let name = alert.textFields?.first?.text {
+                print("Your item: \(name)") // Prints to console as of now
+            }
+        }))
+        
+        self.present(alert, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

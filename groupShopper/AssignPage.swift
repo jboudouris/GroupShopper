@@ -15,15 +15,18 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var switchPersonButton = UIButton(frame: CGRect())
     
     var remainingPersonCount = personList.count // tracks which person items are being checked off for
+    var currentPerson = personList[0]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Assign Items"
+        
         view.backgroundColor = UIColor.white
         
         itemList = ["A", "B", "C"] // temp, will be pulled from stored data
+        
+        title = "Assign Items: " + currentPerson // Creates title for first person
         
         button.setTitle("Done", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
@@ -69,11 +72,12 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // TODO: reset all checkmarks
         
-        // TODO: update name at top to next person
-        
+        // Update name at top to next person
         remainingPersonCount = remainingPersonCount - 1
+        currentPerson = personList[personList.count - remainingPersonCount]
+        title = "Assign Items: " + currentPerson
         
-        if remainingPersonCount == 0 {
+        if remainingPersonCount == 1 {
             switchPersonButton.removeFromSuperview()
             view.addSubview(button)
         }
