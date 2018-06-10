@@ -74,6 +74,8 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             // Add updating of item list here
             if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
                 itemList.append(Item(name: name, price: price))
+                self.tableView.reloadData()
+                self.tableView.reloadInputViews()
 //                print("Your item: \(name)") // Prints to console as of now
             } // add else statement to prompt to enter values
         }))
@@ -88,7 +90,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = itemList[indexPath.row].name
+        cell.textLabel?.text = itemList[indexPath.row].name + ": " + String(itemList[indexPath.row].price)
         return cell
     }
     

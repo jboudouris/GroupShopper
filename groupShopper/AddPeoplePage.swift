@@ -78,9 +78,13 @@ class AddPeople: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 personList.append(Person(name: name))
 //                print("Your name: \(name)") // Prints to console as of now
             }
+            self.tableView.reloadData()
+            self.tableView.reloadInputViews()
         }))
-        
+
         self.present(alert, animated: true)
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

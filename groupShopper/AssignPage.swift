@@ -66,11 +66,12 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func nextPerson() {
-        // TODO: save checked item data from prev person
-        
         // TODO: reset all checkmarks
-        
+        for i in 0...itemList.count {
+            tableView.cellForRow(at: IndexPath(item: i, section: 0))?.accessoryType = .none
+        }
         // Update name at top to next person
+        // BUG: Doesn't work with one person
         remainingPersonCount = remainingPersonCount - 1
         currentPerson = personList[personList.count - remainingPersonCount]
         title = "Assign Items: " + currentPerson.name
@@ -99,8 +100,14 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let  cell = tableView.cellForRow(at: indexPath)
         if (cell!.accessoryType == .none) {
             cell!.accessoryType = .checkmark
+            let item = itemList.filter() { $0.name == cell!.textLabel?.text! }
+            currentPerson.addItem(item: item[0])
+            print(currentPerson.total)
         } else {
             cell!.accessoryType = .none
+            let item = itemList.filter() { $0.name == cell!.textLabel?.text! }
+            currentPerson.removeItem(item: item[0])
         }
     }
+    
 }
