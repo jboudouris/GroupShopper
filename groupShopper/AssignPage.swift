@@ -71,6 +71,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // TODO: reset all checkmarks
         
         // Update name at top to next person
+        // BUG: Doesn't work with one person
         remainingPersonCount = remainingPersonCount - 1
         currentPerson = personList[personList.count - remainingPersonCount]
         title = "Assign Items: " + currentPerson.name
