@@ -62,6 +62,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input item name here..."
+            textField.text = ""
         })
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input price here..."
@@ -70,7 +71,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         // Add the price of the item
         
         alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
-            
             // Add updating of item list here
             if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
                 itemList.append(Item(name: name, price: price))
