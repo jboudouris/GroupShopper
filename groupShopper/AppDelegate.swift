@@ -17,16 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //self.window = UIWindow(frame: UIScreen.main.bounds)
-        //self.window!.makeKeyAndVisible()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window!.makeKeyAndVisible()
         
-        //Storyboard
+        // Sets homage to open on app launch
+        window!.rootViewController = UINavigationController(rootViewController: HomePage())
         
-        
-        if let todo = fetchData() {
-            todoList = todo
-        } else {
-            todoList = [String]()
+        // Load saved data into variables
+        if let people = UserDefaults.standard.array(forKey: "personList") as? [Person] {
+            personList = people
+        }
+        if let items = UserDefaults.standard.array(forKey: "itemList") as? [Item] {
+            itemList = items
         }
         
         return true
@@ -41,7 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        saveData(todoList: todoList!)
+        
+        // Save working data
+        savePeople(personList: personList)
+        saveItems(itemList: itemList)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -54,7 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        saveData(todoList: todoList!)
+        
+        // Save working data
+        savePeople(personList: personList)
+        saveItems(itemList: itemList)
     }
 
 

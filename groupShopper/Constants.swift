@@ -8,16 +8,14 @@
 
 import Foundation
 
-var todoList: [String]?
+var personList: [Person] = []
 
-func saveData(todoList:[String]) {
-    UserDefaults.standard.set(todoList, forKey: "todoList")
+var itemList: [Item] = []
+
+func savePeople(personList: [Person]) {
+    UserDefaults.standard.set(personList, forKey: "personList")
 }
 
-func fetchData() -> [String]? {
-    if let todo = UserDefaults.standard.array(forKey: "todoList") as? [String] {
-        return todo
-    } else {
-        return nil
-    }
+func saveItems(itemList:[Item]) {
+    UserDefaults.standard.set(itemList, forKey: "itemList")
 }
