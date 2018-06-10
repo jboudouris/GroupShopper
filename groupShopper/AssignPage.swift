@@ -31,7 +31,8 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         button.addTarget(self, action: #selector(AssignPage.showNextScreen), for: .touchUpInside)
         
         switchPersonButton.setTitle("Next Person", for: .normal)
-        switchPersonButton.setTitleColor(UIColor.blue, for: .normal)
+        switchPersonButton.setTitleColor(UIColor.white, for: .normal)
+        switchPersonButton.backgroundColor = .blue
         switchPersonButton.addTarget(self, action: #selector(AssignPage.nextPerson), for: .touchUpInside)
         
         tableView.dataSource = self
