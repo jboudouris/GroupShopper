@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = UINavigationController(rootViewController: HomePage())
         
         // Load saved data into variables
-        if let people = UserDefaults.standard.array(forKey: "personList") as? [String] {
+        if let people = UserDefaults.standard.array(forKey: "personList") as? [Person] {
             personList = people
         }
-        if let items = UserDefaults.standard.array(forKey: "itemList") as? [String] {
+        if let items = UserDefaults.standard.array(forKey: "itemList") as? [Item] {
             itemList = items
         }
         

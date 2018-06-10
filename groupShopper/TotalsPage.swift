@@ -20,8 +20,6 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         title = "Totals Page"
         view.backgroundColor = UIColor.white
         
-        totals = ["A", "B", "C"] // temp, will be calculated based on checked data
-        
         button.setTitle("Done", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         button.addTarget(self, action: #selector(TotalsPage.toHome), for: .touchUpInside)
@@ -54,13 +52,13 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return totals.count
+        return personList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = totals[indexPath.row]
+        cell.textLabel?.text = personList[indexPath.row].name + ": " + String(personList[indexPath.row].total)
         
         return cell
     }

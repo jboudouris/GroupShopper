@@ -8,15 +8,14 @@
 
 import Foundation
 
-var personList = [String]()
-var itemList = [String]()
-var totals = [String]()
+var personList: [Person] = []
 
-func savePeople(personList:[String]) {
+var itemList: [Item] = []
+
+func savePeople(personList: [Person]) {
     UserDefaults.standard.set(personList, forKey: "personList")
 }
 
-func saveItems(itemList:[String]) {
+func saveItems(itemList:[Item]) {
     UserDefaults.standard.set(itemList, forKey: "itemList")
 }
-

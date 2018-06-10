@@ -20,8 +20,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         title = "Add Items"
         view.backgroundColor = UIColor.white
         
-        itemList = ["A", "B", "C"] // temp
-        
         // Button to advance page
         button.setTitle("Done", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
@@ -74,9 +72,10 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
             
             // Add updating of item list here
-            if let name = alert.textFields?.first?.text {
-                print("Your item: \(name)") // Prints to console as of now
-            }
+            if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
+                itemList.append(Item(name: name, price: price))
+//                print("Your item: \(name)") // Prints to console as of now
+            } // add else statement to prompt to enter values
         }))
         
         self.present(alert, animated: true)
@@ -89,8 +88,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = itemList[indexPath.row]
-        
+        cell.textLabel?.text = itemList[indexPath.row].name
         return cell
     }
     

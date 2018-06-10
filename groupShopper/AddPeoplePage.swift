@@ -20,7 +20,7 @@ class AddPeople: UIViewController, UITableViewDelegate, UITableViewDataSource {
         title = "Add People"
         view.backgroundColor = UIColor.white
         
-        personList = ["Apple", "Banana", "Carrot"] // temp, will be populated in this class
+//        personList = ["Apple", "Banana", "Carrot"] // temp, will be populated in this class
         
         
         // Button to advance to next page
@@ -75,7 +75,8 @@ class AddPeople: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             // Add updating of item list here
             if let name = alert.textFields?.first?.text {
-                print("Your name: \(name)") // Prints to console as of now
+                personList.append(Person(name: name))
+//                print("Your name: \(name)") // Prints to console as of now
             }
         }))
         
@@ -88,7 +89,7 @@ class AddPeople: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = personList[indexPath.row]
+        cell.textLabel?.text = personList[indexPath.row].name
         return cell
     }
     

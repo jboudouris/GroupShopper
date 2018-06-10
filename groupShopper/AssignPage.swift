@@ -24,9 +24,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         view.backgroundColor = UIColor.white
         
-        itemList = ["A", "B", "C"] // temp, will be pulled from stored data
-        
-        title = "Assign Items: " + currentPerson // Creates title for first person
+        title = "Assign Items: " + currentPerson.name // Creates title for first person
         
         button.setTitle("Done", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
@@ -75,7 +73,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // Update name at top to next person
         remainingPersonCount = remainingPersonCount - 1
         currentPerson = personList[personList.count - remainingPersonCount]
-        title = "Assign Items: " + currentPerson
+        title = "Assign Items: " + currentPerson.name
         
         if remainingPersonCount == 1 {
             switchPersonButton.removeFromSuperview()
@@ -90,7 +88,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = itemList[indexPath.row]
+        cell.textLabel?.text = itemList[indexPath.row].name
         
         cell.accessoryType = .none
         
