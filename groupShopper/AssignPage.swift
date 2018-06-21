@@ -65,7 +65,11 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // Check that all items are assigned
         for item in itemList {
-            
+            if item.numPeople == 0 {
+                let alert = UIAlertController(title: "Insufficent assignment", message: "You must assign each item to at least one person: " + item.name + " was not assigned", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "EXIT", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
         }
         
         // update to only show on last person
