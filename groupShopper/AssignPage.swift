@@ -117,6 +117,8 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let item = itemList.filter() { $0.name == cell!.textLabel?.text! }
             currentPerson.removeItem(item: item[0])
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
