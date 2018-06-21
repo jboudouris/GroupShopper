@@ -56,7 +56,13 @@ class AddPeople: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @objc func showNextScreen() {
-        navigationController?.pushViewController(AddItemsPage(), animated: true)
+        if personList.count < 2 {
+            let alert = UIAlertController(title: "Not enough people", message: "You must add at least 2 people to continue", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        } else {
+            navigationController?.pushViewController(AddItemsPage(), animated: true)
+        }
     }
     
     @objc func addPerson() {
