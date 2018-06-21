@@ -87,6 +87,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return itemList.count
     }
     
+    // Displays names of items to be checked
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
@@ -96,6 +97,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let  cell = tableView.cellForRow(at: indexPath)
