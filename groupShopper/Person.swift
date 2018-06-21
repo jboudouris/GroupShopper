@@ -20,12 +20,20 @@ class Person {
     
     func addItem(item: Item) {
         items.append(item)
-        total = total + item.price
+        item.assignPerson()
+        //total = total + item.price
     }
     
     func removeItem(item: Item) {
         // test
         items = items.filter() { $0 !== item }
-        total = total - item.price
+        //total = total - item.price
+    }
+    
+    // Loops through items and adds price/numPeople
+    func calculateTotal() {
+        for item in self.items {
+            total = total + item.price / item.numPeople
+        }
     }
 }

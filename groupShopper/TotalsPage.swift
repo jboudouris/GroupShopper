@@ -57,7 +57,7 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
+        personList[indexPath.row].calculateTotal()
         cell.textLabel?.text = personList[indexPath.row].name + ": " + String(personList[indexPath.row].total)
         
         return cell
