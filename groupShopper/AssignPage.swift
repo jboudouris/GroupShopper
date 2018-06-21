@@ -62,6 +62,12 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func showNextScreen() {
+        
+        // Check that all items are assigned
+        for item in itemList {
+            
+        }
+        
         // update to only show on last person
         navigationController?.pushViewController(TotalsPage(), animated: true)
     }
