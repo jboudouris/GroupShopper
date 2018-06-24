@@ -14,7 +14,8 @@ class HomePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.white
         title = "Home"

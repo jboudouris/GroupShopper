@@ -31,7 +31,8 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         button.addTarget(self, action: #selector(AssignPage.showNextScreen), for: .touchUpInside)
         
         switchPersonButton.setTitle("Next Person", for: .normal)
-        switchPersonButton.setTitleColor(UIColor.blue, for: .normal)
+        switchPersonButton.setTitleColor(UIColor.white, for: .normal)
+        switchPersonButton.backgroundColor = .blue
         switchPersonButton.addTarget(self, action: #selector(AssignPage.nextPerson), for: .touchUpInside)
         
         tableView.dataSource = self
@@ -61,12 +62,22 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func showNextScreen() {
+        
+        // Check that all items are assigned
+        for item in itemList {
+            if item.numPeople == 0 {
+                let alert = UIAlertController(title: "Insufficent assignment", message: "You must assign each item to at least one person: " + item.name + " was not assigned", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "EXIT", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
+        }
+        
         // update to only show on last person
         navigationController?.pushViewController(TotalsPage(), animated: true)
     }
     
     @objc func nextPerson() {
-        // TODO: reset all checkmarks
+        // Reset all checkmarks
         for i in 0...itemList.count {
             tableView.cellForRow(at: IndexPath(item: i, section: 0))?.accessoryType = .none
         }
@@ -86,6 +97,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return itemList.count
     }
     
+    // Displays names of items to be checked
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
@@ -95,6 +107,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let  cell = tableView.cellForRow(at: indexPath)
@@ -108,6 +121,8 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let item = itemList.filter() { $0.name == cell!.textLabel?.text! }
             currentPerson.removeItem(item: item[0])
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

@@ -62,6 +62,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input item name here..."
+            textField.text = ""
         })
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input price here..."
@@ -70,7 +71,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         // Add the price of the item
         
         alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
-            
             // Add updating of item list here
             if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
                 itemList.append(Item(name: name, price: price))
@@ -90,7 +90,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = itemList[indexPath.row].name + ": " + String(itemList[indexPath.row].price)
+        cell.textLabel?.text = itemList[indexPath.row].name + ": $" + String(itemList[indexPath.row].price)
         return cell
     }
     
@@ -99,5 +99,39 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             itemList.remove(at: indexPath.row)
             tableView.reloadData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let  cell = tableView.cellForRow(at: indexPath)
+        let alert = UIAlertController(title: "Edit item", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        let prevName = String((cell?.textLabel?.text?.split(separator: ":")[0])!)
+        alert.addTextField(configurationHandler: { textField in
+            textField.text = prevName
+        })
+        alert.addTextField(configurationHandler: { textField in
+            textField.text = String((cell?.textLabel?.text?.split(separator: "$")[1])!)
+        })
+        
+        // Add the price of the item
+        
+        alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
+            
+            // Add updating of item list here
+            if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
+                if let itemOffset = itemList.enumerated().first(where : { $0.element.name == prevName }) {
+                    itemList[itemOffset.offset].name = name
+                    itemList[itemOffset.offset].price = price
+                }
+                self.tableView.reloadData()
+                self.tableView.reloadInputViews()
+                //                print("Your item: \(name)") // Prints to console as of now
+            } // add else statement to prompt to enter values
+        }))
+        
+        self.present(alert, animated: true)
+        
+        
     }
 }
