@@ -102,19 +102,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         //let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
         let cell = MyTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
         cell.assignButton.addTarget(self, action: #selector(AddItemsPage.assignItem), for: .touchUpInside)
-        // Assign button functionality
-        //assignButton.tag = indexPath.row;
-        //cell.accessoryType = .detailButton
-        
-        //var cell:UITableViewCell = self.myTable.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        
-        
-        //assignButton.center = self.view.center
-        //assignButton.backgroundColor = UIColor.red
-        //assignButton.addTarget(self, action: #selector(AddItemsPage.assignItem), for: .touchUpInside)
-        //assignButton.setTitle("Click Me!", for: .normal)
-        //assignButton.
-        //cell.addSubview(assignButton)
         
         cell.textLabel?.text = itemList[indexPath.row].name + ": $" + String(itemList[indexPath.row].price)
         return cell
@@ -174,17 +161,14 @@ class MyTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         let gap : CGFloat = 10
-        // let labelHeight: CGFloat = 30
-        // let labelWidth: CGFloat = 150
-        // let lineGap : CGFloat = 5
-        // let label2Y : CGFloat = gap + labelHeight + lineGap
         let imageSize : CGFloat = 30
         
         assignButton = UIButton()
         assignButton.frame = CGRect(x: bounds.width-imageSize - gap, y: gap, width: imageSize, height: imageSize)
         assignButton.backgroundColor = UIColor.red
+        assignButton.setTitle("T", for: .normal)
         //myButton1.setImage(UIImage(named: "browser.png"), for: UIControlState.normal)
-        assignButton.setTitle("Testing", for: .normal)
+        
         contentView.addSubview(assignButton)
         
     }
