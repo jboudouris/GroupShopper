@@ -8,12 +8,14 @@
 
 import Foundation
 
-var personList: [Person] = []
+// var personList: [Person] = []
+
+var groupList: [Group] = []
 
 var itemList: [Item] = []
 
-func savePeople(personList: [Person]) {
-    UserDefaults.standard.set(personList, forKey: "personList")
+func saveGroups(groupList: [Group]) {
+    UserDefaults.standard.set(groupList, forKey: "groupList")
 }
 
 func saveItems(itemList:[Item]) {

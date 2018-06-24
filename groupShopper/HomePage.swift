@@ -38,9 +38,8 @@ class HomePage: UIViewController {
     }
     
     @objc func showNextPage() {
-        personList = []
+       // personList = []
         itemList = []
-        navigationController?.pushViewController(AddPeople(), animated: true)
+        navigationController?.pushViewController(PickGroup(), animated: true)
     }
-    
 }

@@ -19,6 +19,8 @@
 		8501CBE120CC420000E692E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBE020CC420000E692E9 /* Constants.swift */; };
 		8501CBE320CC672000E692E9 /* TotalsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBE220CC672000E692E9 /* TotalsPage.swift */; };
 		8501CBE520CC676300E692E9 /* AssignPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBE420CC676300E692E9 /* AssignPage.swift */; };
+		851E275F20E028B50074F907 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851E275E20E028B50074F907 /* Group.swift */; };
+		851E276220E02A260074F907 /* PickGroupPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851E276120E02A260074F907 /* PickGroupPage.swift */; };
 		85C0C71F20CDA51900B1A1B1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0C71E20CDA51900B1A1B1 /* Person.swift */; };
 		85C0C72120CDA56F00B1A1B1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0C72020CDA56F00B1A1B1 /* Item.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +52,8 @@
 		8501CBE020CC420000E692E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8501CBE220CC672000E692E9 /* TotalsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalsPage.swift; sourceTree = "<group>"; };
 		8501CBE420CC676300E692E9 /* AssignPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignPage.swift; sourceTree = "<group>"; };
+		851E275E20E028B50074F907 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		851E276120E02A260074F907 /* PickGroupPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickGroupPage.swift; sourceTree = "<group>"; };
 		85C0C71E20CDA51900B1A1B1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		85C0C72020CDA56F00B1A1B1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +99,7 @@
 			children = (
 				8501CBBE20CC402500E692E9 /* AppDelegate.swift */,
 				74384E3420CC570300B232D3 /* HomePage.swift */,
+				851E276120E02A260074F907 /* PickGroupPage.swift */,
 				8501CBC020CC402500E692E9 /* AddPeoplePage.swift */,
 				74384E3620CC629500B232D3 /* AddItemsPage.swift */,
 				8501CBE420CC676300E692E9 /* AssignPage.swift */,
@@ -107,6 +112,7 @@
 				8501CBDE20CC415900E692E9 /* addController.swift */,
 				85C0C71E20CDA51900B1A1B1 /* Person.swift */,
 				85C0C72020CDA56F00B1A1B1 /* Item.swift */,
+				851E275E20E028B50074F907 /* Group.swift */,
 			);
 			path = groupShopper;
 			sourceTree = "<group>";
@@ -221,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				851E275F20E028B50074F907 /* Group.swift in Sources */,
 				85C0C72120CDA56F00B1A1B1 /* Item.swift in Sources */,
 				8501CBE320CC672000E692E9 /* TotalsPage.swift in Sources */,
 				8501CBC120CC402500E692E9 /* AddPeoplePage.swift in Sources */,
@@ -231,6 +238,7 @@
 				85C0C71F20CDA51900B1A1B1 /* Person.swift in Sources */,
 				74384E3520CC570300B232D3 /* HomePage.swift in Sources */,
 				74384E3720CC629500B232D3 /* AddItemsPage.swift in Sources */,
+				851E276220E02A260074F907 /* PickGroupPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

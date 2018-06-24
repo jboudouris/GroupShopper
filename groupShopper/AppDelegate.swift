@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = UINavigationController(rootViewController: HomePage())
         
         // Load saved data into variables
-        if let people = UserDefaults.standard.array(forKey: "personList") as? [Person] {
-            personList = people
+        if let groups = UserDefaults.standard.array(forKey: "groupList") as? [Group] {
+            groupList = groups
         }
         if let items = UserDefaults.standard.array(forKey: "itemList") as? [Item] {
             itemList = items
@@ -45,8 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Save working data
-        savePeople(personList: personList)
         saveItems(itemList: itemList)
+        saveGroups(groupList: <#T##[Group]#>)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -61,8 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
         // Save working data
-        savePeople(personList: personList)
         saveItems(itemList: itemList)
+        saveGroups(groupList: <#T##[Group]#>)
     }
 
 
