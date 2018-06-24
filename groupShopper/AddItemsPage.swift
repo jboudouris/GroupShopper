@@ -51,6 +51,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         button.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
         button.reloadInputViews()
         
+        tableView.setEditing(true, animated: true)
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
         tableView.reloadData()
     }
@@ -94,17 +95,31 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+        return itemList.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
-        let cell = MyTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
-        cell.assignButton.addTarget(self, action: #selector(AddItemsPage.assignItem), for: .touchUpInside)
-        
-        cell.textLabel?.text = itemList[indexPath.row].name + ": $" + String(itemList[indexPath.row].price)
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
+//        cell.assignButton.addTarget(self, action: #selector(AddItemsPage.assignItem), for: .touchUpInside)
+        if indexPath.row != itemList.count {
+            cell.textLabel?.text = itemList[indexPath.row].name + ": $" + String(itemList[indexPath.row].price)
+        } else {
+            cell.textLabel?.text = "click to add a new item"
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if indexPath.row < itemList.count {
+            return .delete
+        }
+        return .insert
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -112,38 +127,65 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             itemList.remove(at: indexPath.row)
             tableView.reloadData()
         }
+        if editingStyle == .insert {
+            let alert = UIAlertController(title: "Add an item", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = "Input item name here..."
+                textField.text = ""
+            })
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = "Input price here..."
+            })
+            alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
+                // Add updating of item list here
+                if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
+                    itemList.append(Item(name: name, price: price))
+                    self.tableView.reloadData()
+                    self.tableView.reloadInputViews()
+                    //                print("Your item: \(name)") // Prints to console as of now
+                } // add else statement to prompt to enter values
+            }))
+            self.present(alert, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let  cell = tableView.cellForRow(at: indexPath)
-        let alert = UIAlertController(title: "Edit item", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        let prevName = String((cell?.textLabel?.text?.split(separator: ":")[0])!)
-        alert.addTextField(configurationHandler: { textField in
-            textField.text = prevName
-        })
-        alert.addTextField(configurationHandler: { textField in
-            textField.text = String((cell?.textLabel?.text?.split(separator: "$")[1])!)
-        })
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.editingStyle == .delete {
+            let alert = UIAlertController(title: "Edit item", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        }
+        if cell?.editingStyle == .insert {
+            
+        }
+//
+//        let prevName = String((cell?.textLabel?.text?.split(separator: ":")[0])!)
+//        alert.addTextField(configurationHandler: { textField in
+//            textField.text = prevName
+//        })
+//        alert.addTextField(configurationHandler: { textField in
+//            textField.text = String((cell?.textLabel?.text?.split(separator: "$")[1])!)
+//        })
         
         // Add the price of the item
         
-        alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
-            
-            // Add updating of item list here
-            if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
-                if let itemOffset = itemList.enumerated().first(where : { $0.element.name == prevName }) {
-                    itemList[itemOffset.offset].name = name
-                    itemList[itemOffset.offset].price = price
-                }
-                self.tableView.reloadData()
-                self.tableView.reloadInputViews()
-                //                print("Your item: \(name)") // Prints to console as of now
-            } // add else statement to prompt to enter values
-        }))
-        
-        self.present(alert, animated: true)
+//        alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
+//
+//            // Add updating of item list here
+//            if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
+//                if let itemOffset = itemList.enumerated().first(where : { $0.element.name == prevName }) {
+//                    itemList[itemOffset.offset].name = name
+//                    itemList[itemOffset.offset].price = price
+//                }
+//                self.tableView.reloadData()
+//                self.tableView.reloadInputViews()
+//                //                print("Your item: \(name)") // Prints to console as of now
+//            } // add else statement to prompt to enter values
+//        }))
+//
+        //self.present(alert, animated: true)
         
         
     }
