@@ -22,9 +22,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         view.backgroundColor = UIColor.white
         
         // Button to advance page
-        button.setTitle("Done", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.addTarget(self, action: #selector(AddItemsPage.showNextScreen), for: .touchUpInside)
         
         // Button to assign people to items
         //assignButton.setTitle("Assign", for: .normal)
@@ -52,7 +49,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         button.reloadInputViews()
         
         tableView.setEditing(true, animated: true)
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         tableView.reloadData()
     }
     
