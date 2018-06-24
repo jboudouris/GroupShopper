@@ -77,7 +77,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func nextPerson() {
-        // TODO: reset all checkmarks
+        // Reset all checkmarks
         for i in 0...itemList.count {
             tableView.cellForRow(at: IndexPath(item: i, section: 0))?.accessoryType = .none
         }
