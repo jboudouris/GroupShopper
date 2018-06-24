@@ -31,7 +31,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         //assignButton.addTarget(self, action: #selector(AddItemsPage.assignItem), for: .touchUpInside)
         
         // Creates the plus button in the navigation bar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddItemsPage.addItem))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddItemsPage.showNextScreen))
 
         // Show added items
         tableView.dataSource = self
