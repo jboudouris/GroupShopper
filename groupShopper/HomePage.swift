@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class HomePage: UIViewController {
 
     var button = UIButton(frame: CGRect())
@@ -40,6 +41,7 @@ class HomePage: UIViewController {
     @objc func showNextPage() {
        // personList = []
         itemList = []
-        navigationController?.pushViewController(PickGroup(), animated: true)
+        print("Here")
+        //navigationController?.pushViewController(PickGroup(), animated: true)
     }
 }

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		74384E3520CC570300B232D3 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384E3420CC570300B232D3 /* HomePage.swift */; };
 		74384E3720CC629500B232D3 /* AddItemsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384E3620CC629500B232D3 /* AddItemsPage.swift */; };
+		74F4485320ED6244000B53D0 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 74F4485220ED6244000B53D0 /* tessdata */; };
+		74F4485520ED62D0000B53D0 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F4485420ED62D0000B53D0 /* libstdc++.tbd */; };
+		74F4485720ED62DE000B53D0 /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F4485620ED62DE000B53D0 /* TesseractOCR.framework */; };
+		74F4485920ED62E7000B53D0 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F4485820ED62E7000B53D0 /* CoreImage.framework */; };
+		74F4485B20ED64D8000B53D0 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F4485A20ED64D8000B53D0 /* Test.swift */; };
 		8501CBBF20CC402500E692E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBBE20CC402500E692E9 /* AppDelegate.swift */; };
 		8501CBC120CC402500E692E9 /* AddPeoplePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBC020CC402500E692E9 /* AddPeoplePage.swift */; };
 		8501CBC420CC402500E692E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8501CBC220CC402500E692E9 /* Main.storyboard */; };
@@ -23,6 +28,7 @@
 		851E276220E02A260074F907 /* PickGroupPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851E276120E02A260074F907 /* PickGroupPage.swift */; };
 		85C0C71F20CDA51900B1A1B1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0C71E20CDA51900B1A1B1 /* Person.swift */; };
 		85C0C72120CDA56F00B1A1B1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0C72020CDA56F00B1A1B1 /* Item.swift */; };
+		D6C11FA12110A343CAB1C096 /* Pods_groupShopper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E6E029616EC032558118F5 /* Pods_groupShopper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09E6E029616EC032558118F5 /* Pods_groupShopper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_groupShopper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74384E3420CC570300B232D3 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		74384E3620CC629500B232D3 /* AddItemsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsPage.swift; sourceTree = "<group>"; };
+		74F4485220ED6244000B53D0 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		74F4485420ED62D0000B53D0 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		74F4485620ED62DE000B53D0 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74F4485820ED62E7000B53D0 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		74F4485A20ED64D8000B53D0 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		8501CBBB20CC402500E692E9 /* groupShopper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = groupShopper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8501CBBE20CC402500E692E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8501CBC020CC402500E692E9 /* AddPeoplePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPeoplePage.swift; sourceTree = "<group>"; };
@@ -56,6 +68,8 @@
 		851E276120E02A260074F907 /* PickGroupPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickGroupPage.swift; sourceTree = "<group>"; };
 		85C0C71E20CDA51900B1A1B1 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		85C0C72020CDA56F00B1A1B1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		EA34EC911221F64BBC2ACDBE /* Pods-groupShopper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-groupShopper.release.xcconfig"; path = "Pods/Target Support Files/Pods-groupShopper/Pods-groupShopper.release.xcconfig"; sourceTree = "<group>"; };
+		EDFDA1699458DBBD6CF38A6B /* Pods-groupShopper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-groupShopper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-groupShopper/Pods-groupShopper.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +77,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74F4485920ED62E7000B53D0 /* CoreImage.framework in Frameworks */,
+				74F4485720ED62DE000B53D0 /* TesseractOCR.framework in Frameworks */,
+				74F4485520ED62D0000B53D0 /* libstdc++.tbd in Frameworks */,
+				D6C11FA12110A343CAB1C096 /* Pods_groupShopper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,12 +94,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04C767C9994052FEE49DED92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74F4485820ED62E7000B53D0 /* CoreImage.framework */,
+				74F4485620ED62DE000B53D0 /* TesseractOCR.framework */,
+				74F4485420ED62D0000B53D0 /* libstdc++.tbd */,
+				09E6E029616EC032558118F5 /* Pods_groupShopper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20F7FC320AA166277143F8C8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EDFDA1699458DBBD6CF38A6B /* Pods-groupShopper.debug.xcconfig */,
+				EA34EC911221F64BBC2ACDBE /* Pods-groupShopper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8501CBB220CC402400E692E9 = {
 			isa = PBXGroup;
 			children = (
 				8501CBBD20CC402500E692E9 /* groupShopper */,
 				8501CBD220CC402600E692E9 /* groupShopperTests */,
 				8501CBBC20CC402500E692E9 /* Products */,
+				20F7FC320AA166277143F8C8 /* Pods */,
+				04C767C9994052FEE49DED92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,8 +137,10 @@
 		8501CBBD20CC402500E692E9 /* groupShopper */ = {
 			isa = PBXGroup;
 			children = (
+				74F4485220ED6244000B53D0 /* tessdata */,
 				8501CBBE20CC402500E692E9 /* AppDelegate.swift */,
 				74384E3420CC570300B232D3 /* HomePage.swift */,
+				74F4485A20ED64D8000B53D0 /* Test.swift */,
 				851E276120E02A260074F907 /* PickGroupPage.swift */,
 				8501CBC020CC402500E692E9 /* AddPeoplePage.swift */,
 				74384E3620CC629500B232D3 /* AddItemsPage.swift */,
@@ -133,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8501CBD820CC402600E692E9 /* Build configuration list for PBXNativeTarget "groupShopper" */;
 			buildPhases = (
+				B7C2C26EEB00C2A639A76779 /* [CP] Check Pods Manifest.lock */,
 				8501CBB720CC402400E692E9 /* Sources */,
 				8501CBB820CC402400E692E9 /* Frameworks */,
 				8501CBB920CC402400E692E9 /* Resources */,
+				CD6AA3A4F17A75C8AEDCBFFD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8501CBC920CC402600E692E9 /* LaunchScreen.storyboard in Resources */,
+				74F4485320ED6244000B53D0 /* tessdata in Resources */,
 				8501CBC620CC402600E692E9 /* Assets.xcassets in Resources */,
 				8501CBC420CC402500E692E9 /* Main.storyboard in Resources */,
 			);
@@ -222,6 +267,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B7C2C26EEB00C2A639A76779 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-groupShopper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD6AA3A4F17A75C8AEDCBFFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-groupShopper/Pods-groupShopper-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-groupShopper/Pods-groupShopper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8501CBB720CC402400E692E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -233,6 +317,7 @@
 				8501CBC120CC402500E692E9 /* AddPeoplePage.swift in Sources */,
 				8501CBDF20CC415900E692E9 /* addController.swift in Sources */,
 				8501CBBF20CC402500E692E9 /* AppDelegate.swift in Sources */,
+				74F4485B20ED64D8000B53D0 /* Test.swift in Sources */,
 				8501CBE120CC420000E692E9 /* Constants.swift in Sources */,
 				8501CBE520CC676300E692E9 /* AssignPage.swift in Sources */,
 				85C0C71F20CDA51900B1A1B1 /* Person.swift in Sources */,
@@ -396,9 +481,11 @@
 		};
 		8501CBD920CC402600E692E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDFDA1699458DBBD6CF38A6B /* Pods-groupShopper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = groupShopper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -413,9 +500,11 @@
 		};
 		8501CBDA20CC402600E692E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA34EC911221F64BBC2ACDBE /* Pods-groupShopper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = groupShopper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

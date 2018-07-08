@@ -12,6 +12,8 @@ import Foundation
 
 var groupList: [Group] = []
 
+var personList: [Person] = []
+
 var itemList: [Item] = []
 
 func saveGroups(groupList: [Group]) {

@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Save working data
         saveItems(itemList: itemList)
-        saveGroups(groupList: <#T##[Group]#>)
+        saveGroups(groupList: groupList)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Save working data
         saveItems(itemList: itemList)
-        saveGroups(groupList: <#T##[Group]#>)
+        saveGroups(groupList: groupList)
     }
 
 
