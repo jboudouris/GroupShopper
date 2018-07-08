@@ -10,9 +10,11 @@ import Foundation
 
 // var personList: [Person] = []
 
-var groupList: [Group] = []
+var groupList: [Group] = [] // list of Person types
 
 var itemList: [Item] = []
+
+var currentGroup = 0 // TODO: check correct type
 
 func saveGroups(groupList: [Group]) {
     UserDefaults.standard.set(groupList, forKey: "groupList")
@@ -21,3 +23,5 @@ func saveGroups(groupList: [Group]) {
 func saveItems(itemList:[Item]) {
     UserDefaults.standard.set(itemList, forKey: "itemList")
 }
+
+

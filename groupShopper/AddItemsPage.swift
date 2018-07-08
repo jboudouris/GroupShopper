@@ -27,7 +27,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         //assignButton.setTitle("Assign", for: .normal)
         //assignButton.addTarget(self, action: #selector(AddItemsPage.assignItem), for: .touchUpInside)
         
-        // Creates the plus button in the navigation bar
+        // Creates the done button in the navigation bar
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddItemsPage.showNextScreen))
 
         // Show added items
@@ -55,7 +55,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     @objc func showNextScreen() {
-        navigationController?.pushViewController(AssignPage(), animated: true)
+        navigationController?.pushViewController(TotalsPage(), animated: true)
     }
     
     @objc func assignItem() {
