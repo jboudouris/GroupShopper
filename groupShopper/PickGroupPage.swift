@@ -30,6 +30,7 @@ class PickGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.viewWillAppear(animated)
         
         tableView.setEditing(true, animated: true)
+        tableView.allowsSelectionDuringEditing = true
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         tableView.reloadData()
     }
@@ -62,13 +63,11 @@ class PickGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
             groupList.append(Group(name: "new group"))
             currentGroup = groupList.count - 1 // check this number
             navigationController?.pushViewController(AddGroupPage(), animated: true)
+
         }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row < groupList.count {
-            return false
-        }
         return true
     }
     
@@ -80,11 +79,12 @@ class PickGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("IS THIS WORKING?")
         let cell = tableView.cellForRow(at: indexPath)
-            // set currentGroup to appropraite name
-        print("IS THIS WORKING?")
-        showNextPage()
-        
+        if cell?.editingStyle == .delete {
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        if cell?.editingStyle == .insert {
+            navigationController?.pushViewController(AddGroupPage(), animated: true)
+        }
     }
 }
