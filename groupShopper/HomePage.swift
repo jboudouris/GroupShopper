@@ -26,20 +26,17 @@ class HomePage: UIViewController {
         button.addTarget(self, action: #selector(HomePage.showNextPage), for: .touchUpInside)
         
         view.addSubview(button)
-        
-        // TODO: ? display past totals pages
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Set button frame to be placed centered in the view controller
+        // TODO: find a more elegant way to display this
         button.frame = CGRect(x: 0, y: view.frame.height / 2 - 15, width: view.frame.width, height: 30)
     }
     
     @objc func showNextPage() {
-       // personList = []
-        itemList = []
         navigationController?.pushViewController(PickGroupPage(), animated: true)
     }
 }

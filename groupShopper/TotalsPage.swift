@@ -10,7 +10,6 @@ import UIKit
 
 class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     var tableView = UITableView(frame: CGRect(), style: .plain)
     var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
     
@@ -30,7 +29,6 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         view.addSubview(tableView)
         view.addSubview(button)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

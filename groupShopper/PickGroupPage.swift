@@ -63,7 +63,6 @@ class PickGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
             groupList.append(Group(name: "new group"))
             currentGroup = groupList.count - 1 // check this number
             navigationController?.pushViewController(AddGroupPage(), animated: true)
-
         }
     }
     

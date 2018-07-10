@@ -21,12 +21,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         title = "Add Items"
         view.backgroundColor = UIColor.white
         
-        // Button to advance page
-        
-        // Button to assign people to items
-        //assignButton.setTitle("Assign", for: .normal)
-        //assignButton.addTarget(self, action: #selector(AddItemsPage.assignItem), for: .touchUpInside)
-        
         // Creates the done button in the navigation bar
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddItemsPage.showNextScreen))
 
@@ -37,8 +31,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         view.addSubview(tableView)
         view.addSubview(button)
-        //view.addSubview(assignButton)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +55,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     @objc func addItem() {
-        
         // Creates a pop up prompting for item name and price
         let alert = UIAlertController(title: "Add an item", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -76,15 +67,12 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             textField.placeholder = "Input price here..."
         })
         
-        // Add the price of the item
-        
         alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
             // Add updating of item list here
             if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
                 itemList.append(Item(name: name, price: price))
                 self.tableView.reloadData()
                 self.tableView.reloadInputViews()
-//                print("Your item: \(name)") // Prints to console as of now
             } // add else statement to prompt to enter values
         }))
         
@@ -96,10 +84,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
-//        cell.assignButton.addTarget(self, action: #selector(AddItemsPage.assignItem), for: .touchUpInside)
         if indexPath.row != itemList.count {
             cell.textLabel?.text = itemList[indexPath.row].name + ": $" + String(itemList[indexPath.row].price)
         } else {
@@ -141,7 +126,6 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
                     itemList.append(Item(name: name, price: price))
                     self.tableView.reloadData()
                     self.tableView.reloadInputViews()
-                    //                print("Your item: \(name)") // Prints to console as of now
                 } // add else statement to prompt to enter values
             }))
             self.present(alert, animated: true)
@@ -155,63 +139,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         }
         if cell?.editingStyle == .insert {
-            
+            // TODO: add
         }
-//
-//        let prevName = String((cell?.textLabel?.text?.split(separator: ":")[0])!)
-//        alert.addTextField(configurationHandler: { textField in
-//            textField.text = prevName
-//        })
-//        alert.addTextField(configurationHandler: { textField in
-//            textField.text = String((cell?.textLabel?.text?.split(separator: "$")[1])!)
-//        })
-        
-        // Add the price of the item
-        
-//        alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
-//
-//            // Add updating of item list here
-//            if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
-//                if let itemOffset = itemList.enumerated().first(where : { $0.element.name == prevName }) {
-//                    itemList[itemOffset.offset].name = name
-//                    itemList[itemOffset.offset].price = price
-//                }
-//                self.tableView.reloadData()
-//                self.tableView.reloadInputViews()
-//                //                print("Your item: \(name)") // Prints to console as of now
-//            } // add else statement to prompt to enter values
-//        }))
-//
-        //self.present(alert, animated: true)
-        
-        
     }
 }
-
-class MyTableViewCell: UITableViewCell {
-
-    var assignButton : UIButton!
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:)")
-    }
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        let gap : CGFloat = 10
-        let imageSize : CGFloat = 30
-        
-        assignButton = UIButton()
-        assignButton.frame = CGRect(x: bounds.width-imageSize - gap, y: gap, width: imageSize, height: imageSize)
-        assignButton.backgroundColor = UIColor.red
-        assignButton.setTitle("T", for: .normal)
-        //myButton1.setImage(UIImage(named: "browser.png"), for: UIControlState.normal)
-        
-        contentView.addSubview(assignButton)
-        
-    }
-    
-}
-
-

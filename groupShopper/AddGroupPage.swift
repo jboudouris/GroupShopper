@@ -12,16 +12,11 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     var tableView = UITableView(frame: CGRect(), style: .plain)
     var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-    // var addPersonButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: YOUR_SELECTOR)
-    //var addPersonButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(AddPeople.showNextScreen))
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Add Group"
         view.backgroundColor = UIColor.white
-        
-        //        personList = ["Apple", "Banana", "Carrot"] // temp, will be populated in this class
-        
         
         // Button to advance to next page
         button.setTitle("Done", for: .normal)
@@ -39,7 +34,6 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         view.addSubview(tableView)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +54,6 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     @objc func addPerson() {
-        
         // Creates a pop up prompting for item name and price
         let alert = UIAlertController(title: "Add a person", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -68,8 +61,6 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "Input person name here..."
         })
-        
-        // Add the price of the item
         
         alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
             
@@ -80,9 +71,7 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.tableView.reloadData()
             self.tableView.reloadInputViews()
         }))
-        
         self.present(alert, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
