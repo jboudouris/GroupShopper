@@ -82,8 +82,8 @@ class PickGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         if cell?.editingStyle == .delete {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-        if cell?.editingStyle == .insert {
-            navigationController?.pushViewController(AddGroupPage(), animated: true)
-        }
+//        if cell?.editingStyle == .insert {
+//            navigationController?.pushViewController(AddGroupPage(), animated: true)
+//        }
     }
 }

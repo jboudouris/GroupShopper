@@ -18,15 +18,8 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         title = "Add Group"
         view.backgroundColor = UIColor.white
         
-        // Button to advance to next page
-        button.setTitle("Done", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.addTarget(self, action: #selector(AddGroupPage.showNextScreen), for: .touchUpInside)
-        
-        view.addSubview(button)
-        
         // Creates the done button in the navigation bar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddGroupPage.showNextScreen))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AddGroupPage.showNextPage))
         
         // Displays people in a list on page
         tableView.dataSource = self
@@ -39,17 +32,13 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Set advance button frame to be placed right justafied on the bottom of the screen // COULD USE CLEANUP ON PLACEMENT
-        button.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
-        button.reloadInputViews()
-        
-        // List frame takes up all but bottom of screen to allow room for "done" button
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
+        tableView.setEditing(true, animated: true)
+        tableView.allowsSelectionDuringEditing = true
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         tableView.reloadData()
     }
     
-    
-    @objc func showNextScreen() {
+    @objc func showNextPage() {
         navigationController?.pushViewController(PickGroupPage(), animated: true)
     }
     
@@ -66,7 +55,7 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             
             // Add updating of item list here
             if let name = alert.textFields?.first?.text {
-                groupList[currentGroup].addPerson(personName: name) // TODO: append a new list of Person to groupList and incriment currentGroup accordingly
+                groupList[currentGroup].addPerson(personName: name)
             }
             self.tableView.reloadData()
             self.tableView.reloadInputViews()
@@ -79,7 +68,7 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
         cell.textLabel?.text = groupList[currentGroup].members[indexPath.row].name
         return cell
     }
@@ -90,7 +79,25 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             groupList[currentGroup].removePerson(personName: cell?.textLabel?.text ?? "")
             tableView.reloadData()
         }
-        if editingStyle == .insert {
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if indexPath.row < groupList[currentGroup].members.count {
+            return .delete
+        }
+        return .insert
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.editingStyle == .delete {
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        if cell?.editingStyle == .insert {
             addPerson()
         }
     }
