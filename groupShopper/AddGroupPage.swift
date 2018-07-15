@@ -15,7 +15,7 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Add Group"
+        title = groupList[currentGroup].name
         view.backgroundColor = UIColor.white
         
         // Creates the done button in the navigation bar
@@ -64,12 +64,16 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupList[currentGroup].members.count
+        return groupList[currentGroup].members.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
-        cell.textLabel?.text = groupList[currentGroup].members[indexPath.row].name
+        if indexPath.row != groupList[currentGroup].members.count {
+            cell.textLabel?.text = groupList[currentGroup].members[indexPath.row].name
+        } else {
+            cell.textLabel?.text = "add a group member"
+        }
         return cell
     }
     

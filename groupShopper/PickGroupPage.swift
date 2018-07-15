@@ -44,6 +44,7 @@ class PickGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return groupList.count + 1
     }
     
+    // populate the list of groups
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
         if indexPath.row != groupList.count {
@@ -57,12 +58,27 @@ class PickGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             groupList.remove(at: indexPath.row)
+            currentGroup = 0
             tableView.reloadData()
         }
         if editingStyle == .insert {
-            groupList.append(Group(name: "new group"))
-            currentGroup = groupList.count - 1 // check this number
-            navigationController?.pushViewController(AddGroupPage(), animated: true)
+            // popup to make group name
+            let alert = UIAlertController(title: "Choose a group name", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = "new group"
+            })
+            
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+  
+                if let groupName = alert.textFields?.first?.text {
+                    groupList.append(Group(name: groupName))
+                    currentGroup = groupList.count - 1 // check this number
+                    self.navigationController?.pushViewController(AddGroupPage(), animated: true)
+                }
+            }))
+            self.present(alert, animated: true)
         }
     }
     
@@ -80,10 +96,26 @@ class PickGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.editingStyle == .delete {
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            currentGroup = indexPath.row
+            navigationController?.pushViewController(AddItemsPage(), animated: true)
+        } else {
+            // popup to make group name
+            let alert = UIAlertController(title: "Choose a group name", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = "new group"
+            })
+            
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+                
+                if let groupName = alert.textFields?.first?.text {
+                    groupList.append(Group(name: groupName))
+                    currentGroup = groupList.count - 1 // check this number
+                    self.navigationController?.pushViewController(AddGroupPage(), animated: true)
+                }
+            }))
+            self.present(alert, animated: true)
         }
-//        if cell?.editingStyle == .insert {
-//            navigationController?.pushViewController(AddGroupPage(), animated: true)
-//        }
     }
 }
