@@ -43,7 +43,7 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     @objc func addPerson() {
-        // Creates a pop up prompting for item name and price
+        // Creates a pop up prompting for adding person
         let alert = UIAlertController(title: "Add a person", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -99,6 +99,7 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.editingStyle == .delete {
+            //TODO: Throws error
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         if cell?.editingStyle == .insert {

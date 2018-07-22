@@ -37,6 +37,7 @@ class HomePage: UIViewController {
     }
     
     @objc func showNextPage() {
-        navigationController?.pushViewController(PickGroupPage(), animated: true)
+        self.present(UINavigationController(rootViewController: AssignPopup()) , animated: true, completion: nil)
+        //navigationController?.pushViewController(AssignPopup(), animated: true)
     }
 }

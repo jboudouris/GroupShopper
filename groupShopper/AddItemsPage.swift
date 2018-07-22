@@ -39,7 +39,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         // Set advance button frame to be placed right justafied on the bottom of the screen // COULD USE CLEANUP ON PLACEMENT
         button.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
         button.reloadInputViews()
-        
+        tableView.allowsSelectionDuringEditing = true
         tableView.setEditing(true, animated: true)
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         tableView.reloadData()
@@ -135,8 +135,14 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.editingStyle == .delete {
-            let alert = UIAlertController(title: "Edit item", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            navigationController?.pushViewController(AssignPopup(), animated: true)
+            //let alert = UIAlertController(title: "Edit item", message: nil, preferredStyle: .alert)
+            //alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+           // self.tableView.reloadData()
+           // self.tableView.reloadInputViews()
+            
+            //self.present(alert, animated: true)
         }
         if cell?.editingStyle == .insert {
             // TODO: add
