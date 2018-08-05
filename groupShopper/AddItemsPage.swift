@@ -135,7 +135,18 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.editingStyle == .delete {
-            navigationController?.pushViewController(AssignPopup(), animated: true)
+//            let alrController = UIAlertController(title: "\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+//            
+//            let tableView = UITableView(frame: CGRect())
+//            tableView.delegate = self
+//            tableView.dataSource = self
+//            tableView.backgroundColor = UIColor.black
+//            alrController.view.addSubview(tableView)
+//            
+//            alrController.addAction(UIAlertAction(title: "add", style: .default, handler: nil))
+//            alrController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//            
+//            self.present(alrController, animated: true, completion:{})
             //let alert = UIAlertController(title: "Edit item", message: nil, preferredStyle: .alert)
             //alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
@@ -145,7 +156,22 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             //self.present(alert, animated: true)
         }
         if cell?.editingStyle == .insert {
-            // TODO: add
+            
+            
+            let alrController = UIAlertController(title: "\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+    
+            let tableView = UITableView(frame: CGRect())
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.backgroundColor = UIColor.black
+            alrController.view.addSubview(tableView)
+            
+            alrController.addAction(UIAlertAction(title: "add", style: .default, handler: nil))
+            alrController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alrController, animated: true, completion:{})
+            
+
         }
     }
 }

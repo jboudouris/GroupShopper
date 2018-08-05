@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		74384E3520CC570300B232D3 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384E3420CC570300B232D3 /* HomePage.swift */; };
 		74384E3720CC629500B232D3 /* AddItemsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74384E3620CC629500B232D3 /* AddItemsPage.swift */; };
-		74F448652104EC23000B53D0 /* AssignPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F448642104EC23000B53D0 /* AssignPopup.swift */; };
 		8501CBBF20CC402500E692E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBBE20CC402500E692E9 /* AppDelegate.swift */; };
 		8501CBC120CC402500E692E9 /* AddPeoplePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8501CBC020CC402500E692E9 /* AddPeoplePage.swift */; };
 		8501CBC420CC402500E692E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8501CBC220CC402500E692E9 /* Main.storyboard */; };
@@ -40,7 +39,6 @@
 /* Begin PBXFileReference section */
 		74384E3420CC570300B232D3 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		74384E3620CC629500B232D3 /* AddItemsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsPage.swift; sourceTree = "<group>"; };
-		74F448642104EC23000B53D0 /* AssignPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignPopup.swift; sourceTree = "<group>"; };
 		8501CBBB20CC402500E692E9 /* groupShopper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = groupShopper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8501CBBE20CC402500E692E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8501CBC020CC402500E692E9 /* AddPeoplePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPeoplePage.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 				851E276120E02A260074F907 /* PickGroupPage.swift */,
 				85946F3B20F2A174009414FC /* AddGroupPage.swift */,
 				74384E3620CC629500B232D3 /* AddItemsPage.swift */,
-				74F448642104EC23000B53D0 /* AssignPopup.swift */,
 				8501CBE220CC672000E692E9 /* TotalsPage.swift */,
 				8501CBC220CC402500E692E9 /* Main.storyboard */,
 				8501CBC520CC402600E692E9 /* Assets.xcassets */,
@@ -236,7 +233,6 @@
 				851E275F20E028B50074F907 /* Group.swift in Sources */,
 				85C0C72120CDA56F00B1A1B1 /* Item.swift in Sources */,
 				8501CBE320CC672000E692E9 /* TotalsPage.swift in Sources */,
-				74F448652104EC23000B53D0 /* AssignPopup.swift in Sources */,
 				8501CBC120CC402500E692E9 /* AddPeoplePage.swift in Sources */,
 				8501CBDF20CC415900E692E9 /* addController.swift in Sources */,
 				8501CBBF20CC402500E692E9 /* AppDelegate.swift in Sources */,
