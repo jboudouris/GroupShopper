@@ -98,10 +98,6 @@ class AddGroupPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        if cell?.editingStyle == .delete {
-            //TODO: Throws error
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
         if cell?.editingStyle == .insert {
             addPerson()
         }

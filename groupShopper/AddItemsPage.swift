@@ -135,18 +135,18 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.editingStyle == .delete {
-//            let alrController = UIAlertController(title: "\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-//            
-//            let tableView = UITableView(frame: CGRect())
-//            tableView.delegate = self
-//            tableView.dataSource = self
-//            tableView.backgroundColor = UIColor.black
-//            alrController.view.addSubview(tableView)
-//            
-//            alrController.addAction(UIAlertAction(title: "add", style: .default, handler: nil))
-//            alrController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//            
-//            self.present(alrController, animated: true, completion:{})
+            let alrController = UIAlertController(title: "\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+
+            let tableView = UITableView(frame: CGRect())
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.backgroundColor = UIColor.black
+            alrController.view.addSubview(tableView)
+
+            alrController.addAction(UIAlertAction(title: "add", style: .default, handler: nil))
+            alrController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+            self.present(alrController, animated: true, completion:{})
             //let alert = UIAlertController(title: "Edit item", message: nil, preferredStyle: .alert)
             //alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
@@ -156,22 +156,25 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
             //self.present(alert, animated: true)
         }
         if cell?.editingStyle == .insert {
+            let alert = UIAlertController(title: "Add an item", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
-            
-            let alrController = UIAlertController(title: "\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-    
-            let tableView = UITableView(frame: CGRect())
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.backgroundColor = UIColor.black
-            alrController.view.addSubview(tableView)
-            
-            alrController.addAction(UIAlertAction(title: "add", style: .default, handler: nil))
-            alrController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            
-            self.present(alrController, animated: true, completion:{})
-            
-
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = "Input item name here..."
+                textField.text = ""
+            })
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = "Input price here..."
+            })
+            alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
+                // Add updating of item list here
+                if let name = alert.textFields?[0].text, let price = Double(alert.textFields![1].text!) {
+                    itemList.append(Item(name: name, price: price))
+                    self.tableView.reloadData()
+                    self.tableView.reloadInputViews()
+                } // add else statement to prompt to enter values
+            }))
+            self.present(alert, animated: true)
         }
     }
 }
