@@ -1,8 +1,8 @@
 //
-//  AssignPage.swift
+//  AddGroupPage.swift
 //  groupShopper
 //
-//  Created by James Boudouris on 6/9/18.
+//  Created by James Boudouris on 7/8/18.
 //  Copyright © 2018 discountShoppers. All rights reserved.
 //
 
@@ -11,118 +11,68 @@ import UIKit
 class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableView = UITableView(frame: CGRect(), style: .plain)
-    var button = UIButton(frame: CGRect())
-    var switchPersonButton = UIButton(frame: CGRect())
-    
-    var remainingPersonCount = personList.count // tracks which person items are being checked off for
-    var currentPerson = personList[0]
-    
+    var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        title = "assign page"
         view.backgroundColor = UIColor.white
         
-        title = "Assign Items: " + currentPerson.name // Creates title for first person
+        // Creates the done button in the navigation bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AssignPage.showNextPage))
         
-        button.setTitle("Done", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.addTarget(self, action: #selector(AssignPage.showNextScreen), for: .touchUpInside)
-        
-        switchPersonButton.setTitle("Next Person", for: .normal)
-        switchPersonButton.setTitleColor(UIColor.white, for: .normal)
-        switchPersonButton.backgroundColor = .blue
-        switchPersonButton.addTarget(self, action: #selector(AssignPage.nextPerson), for: .touchUpInside)
-        
+        // Displays people in a list on page
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        view.addSubview(switchPersonButton)
-
+        view.addSubview(tableView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Set advance button frame to be placed right justafied on the bottom of the screen // COULD USE CLEANUP ON PLACEMENT
-        button.frame = CGRect(x: view.frame.width - 150, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
-        button.reloadInputViews()
-        
-        // Next person button frame to be right justafied on bottom of screen
-        switchPersonButton.frame = CGRect(x: view.frame.width - 180, y: view.frame.height - 50, width: view.frame.width / 2, height: 50)
-        switchPersonButton.reloadInputViews()
-        
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 50)
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         tableView.reloadData()
-        
-        view.addSubview(tableView)
-        
     }
     
-    @objc func showNextScreen() {
-        
-        // Check that all items are assigned
-        for item in itemList {
-            if item.numPeople == 0 {
-                let alert = UIAlertController(title: "Insufficent assignment", message: "You must assign each item to at least one person: " + item.name + " was not assigned", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "EXIT", style: .cancel, handler: nil))
-                self.present(alert, animated: true)
-            }
-        }
-        
-        // update to only show on last person
-        navigationController?.pushViewController(TotalsPage(), animated: true)
+    @objc func showNextPage() {
+        navigationController?.pushViewController(AddItemsPage(), animated: true)
     }
     
-    @objc func nextPerson() {
-        // Reset all checkmarks
-        for i in 0...itemList.count {
-            tableView.cellForRow(at: IndexPath(item: i, section: 0))?.accessoryType = .none
-        }
-        // Update name at top to next person
-        // BUG: Doesn't work with one person
-        remainingPersonCount = remainingPersonCount - 1
-        currentPerson = personList[personList.count - remainingPersonCount]
-        title = "Assign Items: " + currentPerson.name
-        
-        if remainingPersonCount == 1 {
-            switchPersonButton.removeFromSuperview()
-            view.addSubview(button)
-        }
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+        return groupList[currentGroup].members.count
     }
     
-    // Displays names of items to be checked
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
+        cell.textLabel?.text = groupList[currentGroup].members[indexPath.row].name
         
-        cell.textLabel?.text = itemList[indexPath.row].name
-        
-        cell.accessoryType = .none
+        if (groupList[currentGroup].members[indexPath.row].hasItem(item_name: selectedItem.name)) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let  cell = tableView.cellForRow(at: indexPath)
+        let cell = tableView.cellForRow(at: indexPath)
+        let currentPerson = groupList[currentGroup].members[indexPath.row]
         if (cell!.accessoryType == .none) {
             cell!.accessoryType = .checkmark
-            let item = itemList.filter() { $0.name == cell!.textLabel?.text! }
-            currentPerson.addItem(item: item[0])
-            print(currentPerson.total)
+            currentPerson.addItem(item: selectedItem)
+            
         } else {
             cell!.accessoryType = .none
-            let item = itemList.filter() { $0.name == cell!.textLabel?.text! }
-            currentPerson.removeItem(item: item[0])
+            currentPerson.removeItem(item: selectedItem)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }
+
+

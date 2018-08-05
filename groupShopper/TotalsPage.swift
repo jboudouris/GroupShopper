@@ -10,7 +10,6 @@ import UIKit
 
 class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     var tableView = UITableView(frame: CGRect(), style: .plain)
     var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
     
@@ -30,7 +29,6 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         view.addSubview(tableView)
         view.addSubview(button)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,13 +50,13 @@ class TotalsPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personList.count
+        return groupList[currentGroup].members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        personList[indexPath.row].calculateTotal()
-        cell.textLabel?.text = personList[indexPath.row].name + ": " + String(personList[indexPath.row].total)
+        groupList[currentGroup].members[indexPath.row].calculateTotal()
+        cell.textLabel?.text = groupList[currentGroup].members[indexPath.row].name + ": " + String(groupList[currentGroup].members[indexPath.row].total)
         
         return cell
     }

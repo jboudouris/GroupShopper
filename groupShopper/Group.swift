@@ -18,11 +18,11 @@ class Group {
         self.members = [Person]()
     }
     
-    func addPerson(person: Person) {
-        members.append(person)
+    func addPerson(personName: String) {
+        members.append(Person(name: personName))
     }
     
-    func removePerson(person: Person) {
-        members = members.filter() { $0 !== person }
+    func removePerson(personName: String) {
+        members = members.filter() { $0.name != personName }
     }
 }
