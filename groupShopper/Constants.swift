@@ -16,6 +16,8 @@ var itemList: [Item] = []
 
 var currentGroup = 0 // TODO: check correct type
 
+var selectedItem = Item(name: "", price: 0)
+
 func saveGroups(groupList: [Group]) {
     UserDefaults.standard.set(groupList, forKey: "groupList")
 }

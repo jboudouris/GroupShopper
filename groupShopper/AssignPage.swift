@@ -12,6 +12,7 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableView = UITableView(frame: CGRect(), style: .plain)
     var button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,11 +49,29 @@ class AssignPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
         cell.textLabel?.text = groupList[currentGroup].members[indexPath.row].name
+        
+        if (groupList[currentGroup].members[indexPath.row].hasItem(item_name: selectedItem.name)) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+        let currentPerson = groupList[currentGroup].members[indexPath.row]
+        if (cell!.accessoryType == .none) {
+            cell!.accessoryType = .checkmark
+            currentPerson.addItem(item: selectedItem)
+            
+        } else {
+            cell!.accessoryType = .none
+            currentPerson.removeItem(item: selectedItem)
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

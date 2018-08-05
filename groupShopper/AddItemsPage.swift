@@ -135,6 +135,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.editingStyle == .delete {
+                selectedItem = itemList[indexPath.row]
                 navigationController?.pushViewController(AssignPage(), animated: true)
         }
         if cell?.editingStyle == .insert {

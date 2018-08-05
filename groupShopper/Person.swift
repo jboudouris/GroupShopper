@@ -30,6 +30,16 @@ class Person {
         //total = total - item.price
     }
     
+    func hasItem(item_name: String) -> Bool {
+        for item in self.items {
+            if (item_name == item.name) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     // Loops through items and adds price/numPeople
     func calculateTotal() {
         for item in self.items {
