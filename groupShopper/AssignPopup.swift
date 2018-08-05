@@ -14,19 +14,30 @@ class AssignPopup: UIAlertController, UITableViewDelegate, UITableViewDataSource
     
     let tableView = UITableView(frame: CGRect())
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        tableView.setEditing(true, animated: true)
+//        tableView.allowsSelectionDuringEditing = true
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        tableView.reloadData()
+        self.present(alrController, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "assign"
+        title = "Testing\n\n\n\n\n\n\n\n"
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = UIColor.black
-        alrController.view.addSubview(tableView)
-        
+        tableView.backgroundColor = UIColor.white
+        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         alrController.addAction(UIAlertAction(title: "add", style: .default, handler: nil))
         alrController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alrController.view.addSubview(tableView)
+    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
