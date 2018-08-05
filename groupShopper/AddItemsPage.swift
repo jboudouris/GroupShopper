@@ -135,17 +135,7 @@ class AddItemsPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.editingStyle == .delete {
-            //let alrController = AssignPopup()
-
-            self.present(AssignPopup(), animated: true)
-            //self.present(alrController, animated: true)
-            //let alert = UIAlertController(title: "Edit item", message: nil, preferredStyle: .alert)
-            //alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            
-           // self.tableView.reloadData()
-           // self.tableView.reloadInputViews()
-            
-            //self.present(alert, animated: true)
+                navigationController?.pushViewController(AssignPage(), animated: true)
         }
         if cell?.editingStyle == .insert {
             let alert = UIAlertController(title: "Add an item", message: nil, preferredStyle: .alert)
